@@ -1,21 +1,26 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from vacine.api.serializers import UserSerializer, GroupSerializer
+from vacine.api.serializers import UserSerializer, PacienteSerializer
+from vacine.api.models import User, Paciente
+from django.db import transaction
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+  queryset = User.objects.all().order_by('-date_joined')
+  serializer_class = UserSerializer
 
+class PacienteViewSet(viewsets.ModelViewSet):
+  queryset = Paciente.objects.all().order_by('nome_completo')
+  serializer_class = PacienteSerializer
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+  # def perform_create(self, serializer):
+  #   validated_data = serializer.validated_data
+
+  #   with transaction.atomic():
+  #     email = validated_data.get('email', None)
+  #     password = validated_data.get('password', None)
+
+  #     user = User(email=email, password=password, user_type=1)
+  #     user.clean()
+  #     user.save()
+
+  #     serializer.save(user=user)
