@@ -3,8 +3,8 @@
   <img src="../assets/medicine.svg" alt="Ilustração com dois médicos" />
   <img class="logo" src="../assets/logo.png" alt="Logotipo do Vacine" />
   <div>
-    <button class="primary">Cadastrar-se</button>
-    <button class="secondary">Entrar</button>
+    <LinkButton to="/cadastro" type="primary">Cadastrar-se</LinkButton>
+    <LinkButton to="/entrar" type="secondary">Entrar</LinkButton>
   </div>
 </div>
 </template>
@@ -18,7 +18,7 @@ div.home {
   padding-top: 3rem;
 }
 
-button.primary {
+a.primary {
   margin-bottom: 1rem;
 }
 
@@ -31,3 +31,14 @@ img.logo {
   margin: 0 auto;
 }
 </style>
+
+<script>
+import LinkButton from '../components/LinkButton';
+
+export default {
+  name: 'Home',
+  components: {
+    LinkButton
+  }
+}
+</script>

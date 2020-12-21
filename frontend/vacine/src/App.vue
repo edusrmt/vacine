@@ -29,23 +29,4 @@ export default {
 #app > div {
   flex: 1;
 }
-
-button {
-  width: 100%;
-  min-height: 48px;
-  border-style: none;
-  border-radius: 5px;
-  font-size: 18px;
-}
-
-button.primary {
-  background-color: #356AEA;
-  color: #FFFFFF;
-}
-
-button.secondary {
-  background-color: #FFFFFF;
-  border: 1px solid #356AEA;
-  color: #356AEA;
-}
 </style>
